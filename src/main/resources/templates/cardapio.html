@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cardápio</title>
+</head>
+<body>
+    <h2>Cardápio</h2>
+    <ul>
+        <li th:each="prato : ${pratos}">
+            <span th:text="${prato.nome}"></span> - <span th:text="${prato.preco}"></span>
+            <p th:text="${prato.descricao}"></p>
+        </li>
+    </ul>
+</body>
+</html>
