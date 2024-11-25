@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Cadastro</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .card {
+            padding: 20px;
+            width: 400px;
+        }
+        .form-container {
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 30px;
+        }
+        .company-name {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FF5722; /* Cor laranja para destaque */
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Cadastro</h2>
-    <form th:action="@{/cadastro}" method="post">
-        <label for="nomeUsuario">Nome de usuário: </label><input type="text" id="nomeUsuario" name="nomeUsuario" required/><br/>
-        <label for="senha">Senha: </label><input type="password" id="senha" name="senha" required/><br/>
-        <button type="submit">Cadastrar</button>
-    </form>
+    <div class="card">
+        <div class="form-container">
+            <!-- Nome da empresa -->
+            <div class="company-name">BICHOTER'S FOOD</div>
+            <h2>Cadastro</h2>
+            <form th:action="@{/cadastro}" method="post">
+                <div class="input-field">
+                    <input type="text" id="nomeUsuario" name="nomeUsuario" required />
+                    <label for="nomeUsuario">Nome de usuário</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="senha" name="senha" required />
+                    <label for="senha">Senha</label>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
