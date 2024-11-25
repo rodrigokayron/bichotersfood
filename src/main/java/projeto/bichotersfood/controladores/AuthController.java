@@ -36,7 +36,7 @@ public class AuthController {
             return "redirect:/cardapio";  // Redireciona para o cardápio
         } else {
             model.addAttribute("erro", "Credenciais inválidas");
-            return "login";
+            return "login";  // Retorna para o login em caso de falha
         }
     }
 }

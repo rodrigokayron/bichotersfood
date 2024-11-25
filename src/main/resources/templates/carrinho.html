@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Seu Carrinho</h2>
+
+        <ul class="collection">
+            <li class="collection-item" th:each="item : ${itensCarrinho}">
+                <span th:text="${item.nome}"></span> - <span th:text="${item.preco}"></span>
+            </li>
+        </ul>
+
+        <div>
+            <h5>Total: <span th:text="${total}"></span></h5>
+        </div>
+
+        <a href="/finalizar-compra" class="btn">Finalizar Compra</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
