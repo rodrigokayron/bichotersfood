@@ -2,54 +2,43 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f9;
-        }
-        .card {
-            padding: 20px;
-            width: 400px;
-        }
-        .form-container {
-            text-align: center;
-        }
-        h2 {
-            margin-bottom: 30px;
-        }
-        .company-name {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #FF5722; /* Cor laranja para destaque */
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
-<body>
-    <div class="card">
-        <div class="form-container">
-            <!-- Nome da empresa -->
-            <div class="company-name">BICHOTER'S FOOD</div>
-            <h2>Cadastro</h2>
-            <form th:action="@{/cadastro}" method="post">
-                <div class="input-field">
-                    <input type="text" id="nomeUsuario" name="nomeUsuario" required />
-                    <label for="nomeUsuario">Nome de usuário</label>
+<body class="grey lighten-4">
+
+    <div class="container">
+        <div class="row" style="height: 100vh;">
+            <div class="col s12 m8 l6 offset-m2 offset-l3">
+                <div class="card login-card z-depth-3" style="padding: 40px;">
+                    <div class="center-align">
+                        <div class="company-name" style="font-size: 2.5rem; font-weight: bold; color: #FF5722; margin-bottom: 20px;">
+                            BICHOTER'S FOOD
+                        </div>
+                        <h2 style="font-weight: 500; margin-bottom: 30px;">Cadastro</h2>
+                    </div>
+                    <form th:action="@{/cadastro}" method="post">
+                        <div class="input-field">
+                            <input type="text" id="nomeUsuario" name="nomeUsuario" required />
+                            <label for="nomeUsuario">Nome de usuário</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" id="senha" name="senha" required />
+                            <label for="senha">Senha</label>
+                        </div>
+                        <button class="btn waves-effect waves-light pink" type="submit">Cadastrar</button>
+                    </form>
+
+                    <div class="center-align" style="margin-top: 20px;">
+                        <a href="/login" class="btn-flat">Já tem uma conta? Faça login</a>
+                    </div>
                 </div>
-                <div class="input-field">
-                    <input type="password" id="senha" name="senha" required />
-                    <label for="senha">Senha</label>
-                </div>
-                <button class="btn waves-effect waves-light" type="submit">Cadastrar</button>
-            </form>
+            </div>
         </div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

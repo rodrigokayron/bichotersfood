@@ -2,168 +2,109 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardápio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <style>
-        /* Centraliza o conteúdo */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f5f5f5;
-        }
-
-        /* Estilo para o container do cardápio */
-        .container {
-            width: 80%;
-            max-width: 600px; /* Tamanho máximo */
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centraliza os itens dentro do container */
-            position: relative; /* Permite que o ícone seja posicionado dentro do container */
-        }
-
-        /* Título BICHOTER'S FOOD */
-        .empresa-title {
-            font-family: 'Arial', sans-serif;
-            color: #FF00FF; /* Cor pink */
-            font-size: 32px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        /* Título Cardápio */
-        h2 {
-            text-align: center;
-            color: #333;
-            font-size: 24px;
-        }
-
-        /* Estilização da lista de produtos */
-        .collection {
-            width: 100%; /* Ocupa toda a largura do container */
-            padding-left: 0;
-            margin-top: 20px;
-        }
-
-        .collection-item {
-            padding: 10px 20px;
-            font-size: 18px;
-            margin-bottom: 15px; /* Espaço maior entre os itens */
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centraliza o conteúdo do item */
-        }
-
-        .collection-item span {
-            font-weight: bold;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        /* Descrição do prato */
-        .collection-item p {
-            font-size: 14px;
-            color: #666;
-            margin-top: 5px;
-            text-align: center;
-        }
-
-        /* Estilo para o ícone de pessoa */
-        .user-icon {
-            font-size: 50px; /* Tamanho maior para o ícone */
-            color: #FF00FF; /* Cor do ícone (mesma cor pink) */
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-        
-        /* Botão "Adicionar ao Carrinho" */
-        .btn-carrinho {
-            background-color: #FF00FF; /* Cor do botão */
-            color: white;
-            margin-top: 10px;
-            text-align: center;
-        }
-    </style>
 </head>
-<body>
+<body class="grey lighten-4">
 
-    <!-- Ícone de usuário no canto superior direito -->
-    <a class="dropdown-trigger user-icon" href="#" data-target="dropdown1">
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="/login">Sair</a></li>
+        <li><a href="/meus-pedidos">Meus Pedidos</a></li>
+        <li><a href="/cardapio/carrinho">Carrinho</a></li>
+    </ul>
+
+    <a class="dropdown-trigger btn-floating btn-large waves-effect waves-light pink" href="#" data-target="dropdown1">
         <i class="material-icons">person</i>
     </a>
 
-    <!-- Menu dropdown -->
-    <ul id="dropdown1" class="dropdown-content">
-        <li><a href="/login">Sair</a></li> <!-- Link para a página de login -->
-        <li><a href="/meus-pedidos">Meus Pedidos</a></li> <!-- Link para a página de meus pedidos -->
-        <li><a href="/cardapio/carrinho">Carrinho</a></li> <!-- Link para o carrinho -->
-    </ul>
-
     <div class="container">
-        <!-- Nome da empresa em pink -->
-        <div class="empresa-title">BICHOTER'S FOOD</div>
+        <div class="row">
+            <div class="col s12 m8 l6 offset-m2 offset-l3">
+                <div class="card z-depth-3" style="padding: 30px;">
+                    <div class="empresa-title center-align" style="font-size: 2.5rem; font-weight: bold; color: #FF5722; margin-bottom: 20px;">
+                        BICHOTER'S FOOD
+                    </div>
 
-        <h2>Cardápio</h2>
-        
-        <!-- Lista de pratos -->
-        <ul class="collection">
-            <li class="collection-item">
-                <span>Feijoada</span> - <span>R$ 39,99</span>
-                <p>Feijoada com arroz, farofa e laranja</p>
-                <!-- Botão de Adicionar ao Carrinho -->
-                <form th:action="@{/cardapio/carrinho}" method="post">
-                    <input type="hidden" name="pratoId" value="1"> <!-- Exemplo de ID do prato -->
-                    <button type="submit" class="btn-carrinho">Adicionar ao Carrinho</button>
-                </form>
-            </li>
-            <li class="collection-item">
-                <span>Churrasco</span> - <span>R$ 49,99</span>
-                <p>Churrasco com carnes variadas e vinagrete</p>
-                <form th:action="@{/cardapio/carrinho}" method="post">
-                    <input type="hidden" name="pratoId" value="2">
-                    <button type="submit" class="btn-carrinho">Adicionar ao Carrinho</button>
-                </form>
-            </li>
-            <li class="collection-item">
-                <span>Pizza de Calabresa</span> - <span>R$ 29,99</span>
-                <p>Pizza de calabresa com queijo e molho especial</p>
-                <form th:action="@{/cardapio/carrinho}" method="post">
-                    <input type="hidden" name="pratoId" value="3">
-                    <button type="submit" class="btn-carrinho">Adicionar ao Carrinho</button>
-                </form>
-            </li>
-            <li class="collection-item">
-                <span>Hamburguer</span> - <span>R$ 19,99</span>
-                <p>Hamburguer artesanal com batata frita</p>
-                <form th:action="@{/cardapio/carrinho}" method="post">
-                    <input type="hidden" name="pratoId" value="4">
-                    <button type="submit" class="btn-carrinho">Adicionar ao Carrinho</button>
-                </form>
-            </li>
-        </ul>
+                    <h2 class="center-align" style="font-size: 24px; color: #333;">Cardápio</h2>
+
+                    <ul class="collection">
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s8">
+                                    <span>Feijoada</span> - <span>R$ 39,99</span>
+                                    <p>Feijoada com arroz, farofa e laranja</p>
+                                </div>
+                                <div class="col s4 right-align">
+                                    <form th:action="@{/cardapio/carrinho}" method="post">
+                                        <input type="hidden" name="pratoId" value="1">
+                                        <input type="hidden" name="pratoNome" value="Feijoada">
+                                        <input type="hidden" name="pratoPreco" value="39.99">
+                                        <button type="submit" class="btn waves-effect waves-light pink">Adicionar ao Carrinho</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s8">
+                                    <span>Churrasco</span> - <span>R$ 49,99</span>
+                                    <p>Churrasco com carnes variadas e vinagrete</p>
+                                </div>
+                                <div class="col s4 right-align">
+                                    <form th:action="@{/cardapio/carrinho}" method="post">
+                                        <input type="hidden" name="pratoId" value="2">
+                                        <input type="hidden" name="pratoNome" value="Churrasco">
+                                        <input type="hidden" name="pratoPreco" value="49.99">
+                                        <button type="submit" class="btn waves-effect waves-light pink">Adicionar ao Carrinho</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s8">
+                                    <span>Pizza de Calabresa</span> - <span>R$ 29,99</span>
+                                    <p>Pizza de calabresa com queijo e molho especial</p>
+                                </div>
+                                <div class="col s4 right-align">
+                                    <form th:action="@{/cardapio/carrinho}" method="post">
+                                        <input type="hidden" name="pratoId" value="3">
+                                        <input type="hidden" name="pratoNome" value="Pizza de Calabresa">
+                                        <input type="hidden" name="pratoPreco" value="29.99">
+                                        <button type="submit" class="btn waves-effect waves-light pink">Adicionar ao Carrinho</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s8">
+                                    <span>Hamburguer</span> - <span>R$ 19,99</span>
+                                    <p>Hamburguer artesanal com batata frita</p>
+                                </div>
+                                <div class="col s4 right-align">
+                                    <form th:action="@{/cardapio/carrinho}" method="post">
+                                        <input type="hidden" name="pratoId" value="4">
+                                        <input type="hidden" name="pratoNome" value="Hamburguer">
+                                        <input type="hidden" name="pratoPreco" value="19.99">
+                                        <button type="submit" class="btn waves-effect waves-light pink">Adicionar ao Carrinho</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Scripts do Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.dropdown-trigger');
-            M.Dropdown.init(elems);
+            M.Dropdown.init(elems, {});
         });
     </script>
 

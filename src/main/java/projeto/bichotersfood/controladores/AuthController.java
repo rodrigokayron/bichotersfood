@@ -33,10 +33,10 @@ public class AuthController {
     public String login(@ModelAttribute Usuario usuario, Model model) {
         Usuario usuarioEncontrado = usuarioRepository.findByNomeUsuario(usuario.getNomeUsuario());
         if (usuarioEncontrado != null && usuarioEncontrado.getSenha().equals(usuario.getSenha())) {
-            return "redirect:/cardapio";  // Redireciona para o cardápio
+            return "redirect:/cardapio";  
         } else {
             model.addAttribute("erro", "Credenciais inválidas");
-            return "login";  // Retorna para o login em caso de falha
+            return "login";  
         }
     }
 }

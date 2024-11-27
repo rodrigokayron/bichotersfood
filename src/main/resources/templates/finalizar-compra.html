@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho</title>
+    <title>Finalizar Compra</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col s12 m8 l6 offset-m2 offset-l3">
                 <div class="card z-depth-3" style="padding: 30px;">
-                    <h2 class="center-align" style="font-size: 24px; color: #333;">Seu Carrinho</h2>
+                    <h2 class="center-align" style="font-size: 24px; color: #333;">Finalizar Compra</h2>
 
                     <!-- Lista de itens no carrinho -->
                     <ul class="collection">
@@ -23,29 +23,52 @@
                                     <span th:text="${item.nome}">Nome do Prato</span> - 
                                     <span th:text="${item.preco}">Preço</span>
                                 </div>
-                                <div class="col s4 right-align">
-                                    <form th:action="@{/cardapio/carrinho/remover}" method="post" style="display:inline-block;">
-                                        <input type="hidden" name="pratoId" th:value="${item.id}">
-                                        <button type="submit" class="btn-small red">Remover</button>
-                                    </form>
-                                </div>
                             </div>
                         </li>
                     </ul>
 
+                    <!-- Exibindo o total -->
                     <div class="total-container" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: bold;">
                         <h5>Total:</h5>
                         <h5><span th:text="${total}">R$ 0,00</span></h5>
                     </div>
 
-                    <div class="center-align" style="margin-top: 30px;">
-                        <a href="/finalizar-compra" class="btn waves-effect waves-light pink">Finalizar Compra</a>
-                    </div>
+                    <!-- Formulário de Finalização -->
+                    <form th:action="@{/finalizar-compra}" method="post" style="margin-top: 30px;">
+
+                        <!-- Forma de pagamento -->
+                        <div class="input-field">
+                            <label for="formaPagamento">Forma de Pagamento</label>
+                            <select name="formaPagamento" id="formaPagamento" required>
+                                <option value="pix">Pix</option>
+                                <option value="dinheiro">Dinheiro</option>
+                            </select>
+                        </div>
+
+                        <!-- Hora de retirada -->
+                        <div class="input-field">
+                            <label for="horaRetirada">Hora de Retirada</label>
+                            <input type="time" name="horaRetirada" id="horaRetirada" required>
+                        </div>
+
+                        <!-- Botão para confirmar a compra -->
+                        <div class="center-align">
+                            <button type="submit" class="btn waves-effect waves-light pink">Confirmar Compra</button>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            M.FormSelect.init(elems);
+        });
+    </script>
+
 </body>
 </html>

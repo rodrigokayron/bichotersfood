@@ -20,8 +20,7 @@ public class Usuario {
     private String senha;
 
     @NotBlank
-    private String papel = "USUARIO"; // papel padrão de usuário
-
+    private String papel = "USUARIO"; 
     public Long getId() {
         return id;
     }
