@@ -15,7 +15,6 @@
                 <div class="card z-depth-3" style="padding: 30px;">
                     <h2 class="center-align" style="font-size: 24px; color: #333;">Finalizar Compra</h2>
 
-                    <!-- Lista de itens no carrinho -->
                     <ul class="collection">
                         <li class="collection-item" th:each="item : ${itensCarrinho}">
                             <div class="row">
@@ -27,16 +26,13 @@
                         </li>
                     </ul>
 
-                    <!-- Exibindo o total -->
                     <div class="total-container" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: bold;">
                         <h5>Total:</h5>
                         <h5><span th:text="${total}">R$ 0,00</span></h5>
                     </div>
 
-                    <!-- Formulário de Finalização -->
                     <form th:action="@{/finalizar-compra}" method="post" style="margin-top: 30px;">
 
-                        <!-- Forma de pagamento -->
                         <div class="input-field">
                             <label for="formaPagamento">Forma de Pagamento</label>
                             <select name="formaPagamento" id="formaPagamento" required>
@@ -45,13 +41,11 @@
                             </select>
                         </div>
 
-                        <!-- Hora de retirada -->
                         <div class="input-field">
                             <label for="horaRetirada">Hora de Retirada</label>
                             <input type="time" name="horaRetirada" id="horaRetirada" required>
                         </div>
 
-                        <!-- Botão para confirmar a compra -->
                         <div class="center-align">
                             <button type="submit" class="btn waves-effect waves-light pink">Confirmar Compra</button>
                         </div>

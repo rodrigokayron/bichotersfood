@@ -6,28 +6,47 @@
     <title>Cardápio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- Fonte Roboto -->
 </head>
-<body class="grey lighten-4">
+<body style="background-color: #f8bbd0;"> <!-- Rosa claro para fundo da tela -->
 
+    <!-- Faixa superior pink, altura aumentada e centralização do texto -->
+    <div class="pink lighten-1" style="height: 150px; display: flex; justify-content: center; align-items: center;">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <!-- Texto "BICHOTER'S FOOD" centralizado na faixa -->
+                    <span style="color: #333; font-weight: bold; font-size: 3rem;">BICHOTER'S FOOD</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logo na parte superior esquerda -->
+    <div class="left" style="position: absolute; top: 20px; left: 20px;">
+        <img src="/images/logo.png" alt="Logo da Empresa" class="responsive-img" style="max-width: 100px;">
+    </div>
+
+    <!-- Ícone do usuário (person) no canto superior direito, um pouco mais à esquerda e para baixo -->
     <ul id="dropdown1" class="dropdown-content">
         <li><a href="/login">Sair</a></li>
         <li><a href="/meus-pedidos">Meus Pedidos</a></li>
         <li><a href="/cardapio/carrinho">Carrinho</a></li>
     </ul>
 
-    <a class="dropdown-trigger btn-floating btn-large waves-effect waves-light pink" href="#" data-target="dropdown1">
+    <a class="dropdown-trigger btn-floating btn-large waves-effect waves-light pink" href="#" data-target="dropdown1" style="position: absolute; top: 40px; right: 40px;">
         <i class="material-icons">person</i>
     </a>
 
-    <div class="container">
+    <!-- Container para o cardápio -->
+    <div class="container" style="margin-top: 50px;"> <!-- Adicionando margem para descer o cardápio -->
         <div class="row">
             <div class="col s12 m8 l6 offset-m2 offset-l3">
-                <div class="card z-depth-3" style="padding: 30px;">
-                    <div class="empresa-title center-align" style="font-size: 2.5rem; font-weight: bold; color: #FF5722; margin-bottom: 20px;">
-                        BICHOTER'S FOOD
-                    </div>
-
-                    <h2 class="center-align" style="font-size: 24px; color: #333;">Cardápio</h2>
+                <div class="card z-depth-3" style="padding: 30px; background-color: #ffffff;"> <!-- Cor branca no card -->
+                    <!-- Nome "Cardápio" modificado com uma fonte melhor e cor pink -->
+                    <h2 class="center-align" style="font-size: 30px; color: #E91E63; font-family: 'Roboto', sans-serif; font-weight: 500; margin-bottom: 30px;">
+                        Cardápio
+                    </h2>
 
                     <ul class="collection">
                         <li class="collection-item">

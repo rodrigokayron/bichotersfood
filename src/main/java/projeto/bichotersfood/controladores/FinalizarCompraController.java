@@ -19,26 +19,21 @@ public class FinalizarCompraController {
                                   @RequestParam("horaRetirada") String horaRetirada,
                                   Model model) {
 
-        // Exibir ou processar as informações
         System.out.println("Forma de Pagamento: " + formaPagamento);
         System.out.println("Hora de Retirada: " + horaRetirada);
 
-        // Exemplo: Pode-se adicionar a compra ao banco de dados, gerar um pedido, etc.
-        // Aqui você pode salvar a compra no banco, gerar um pedido, etc.
-        
-        // Limpar o carrinho após a compra
+  
         carrinho.getItens().clear();
 
-        // Exibir uma mensagem de confirmação
         model.addAttribute("mensagem", "Compra realizada com sucesso!");
 
-        return "compra-finalizada";  // Redireciona para a página de confirmação ou para uma nova tela
+        return "compra-finalizada";  
     }
 
     @GetMapping
     public String mostrarPaginaFinalizarCompra(Model model) {
         model.addAttribute("itensCarrinho", carrinho.getItens());
         model.addAttribute("total", carrinho.getTotal());
-        return "finalizar-compra";  // Exibe a página de finalização da compra
+        return "finalizar-compra";  
     }
 }
