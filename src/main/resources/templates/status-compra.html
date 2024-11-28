@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status da Compra</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="grey lighten-4">
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m8 l6 offset-m2 offset-l3">
+                <div class="card z-depth-3" style="padding: 30px; background-color: #ffffff;">
+                    <h2 class="center-align" style="font-size: 24px; color: #333;">Status da Compra</h2>
+
+                    <!-- Exibindo o status do pedido -->
+                    <div class="center-align">
+                        <h5 th:text="'Status: ' + ${status}" style="color: #E91E63;"></h5>
+                        <p>Seu pedido está sendo processado. Acompanhe a mudança de status!</p>
+                    </div>
+
+                    <!-- Botão para voltar ao cardápio -->
+                    <div class="center-align" style="margin-top: 30px;">
+                        <a href="/cardapio" class="btn waves-effect waves-light pink">Voltar ao Cardápio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

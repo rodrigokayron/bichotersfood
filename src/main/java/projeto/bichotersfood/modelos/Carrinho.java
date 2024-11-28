@@ -8,7 +8,6 @@ import java.util.List;
 public class Carrinho {
     private List<Prato> itens = new ArrayList<>();
 
-   
     public void adicionarPrato(Prato prato) {
         itens.add(prato);
     }

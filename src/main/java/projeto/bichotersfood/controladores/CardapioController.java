@@ -28,11 +28,16 @@ public class CardapioController {
     public String adicionarAoCarrinho(@RequestParam("pratoId") Long pratoId,
                                        @RequestParam("pratoNome") String pratoNome,
                                        @RequestParam("pratoPreco") double pratoPreco,
+                                       @RequestParam(required = false) String saborRefrigerante, // Parâmetro opcional
                                        Model model) {
-        
+
+        if (pratoNome.equals("Refrigerante") && saborRefrigerante != null) {
+            pratoNome = pratoNome + " - " + saborRefrigerante; // Atualiza o nome do refrigerante com o sabor escolhido
+        }
+
         Prato prato = new Prato();
         prato.setId(pratoId);
-        prato.setNome(pratoNome);  
+        prato.setNome(pratoNome);
         prato.setPreco(pratoPreco);
 
         carrinho.adicionarPrato(prato);  
@@ -40,16 +45,15 @@ public class CardapioController {
         return "redirect:/cardapio/carrinho";  
     }
 
-    @PostMapping("/carrinho/remover")
-    public String removerDoCarrinho(@RequestParam("pratoId") Long pratoId, Model model) {
-        carrinho.removerPrato(pratoId); 
-        return "redirect:/cardapio/carrinho";  
+    @GetMapping("/carrinho")
+    public String exibirCarrinho(Model model) {
+        model.addAttribute("carrinho", carrinho);
+        return "carrinho";
     }
 
-    @GetMapping("/carrinho")
-    public String mostrarCarrinho(Model model) {
-        model.addAttribute("itensCarrinho", carrinho.getItens());
-        model.addAttribute("total", carrinho.getTotal());
-        return "carrinho";  
+    @PostMapping("/carrinho/remover")
+    public String removerDoCarrinho(@RequestParam("pratoId") Long pratoId) {
+        carrinho.removerPrato(pratoId);
+        return "redirect:/cardapio/carrinho";
     }
 }

@@ -6,17 +6,34 @@
     <title>Carrinho</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
-<body class="grey lighten-4">
+<body style="background-color: #f8bbd0;">
 
-    <div class="container">
+    <div class="pink lighten-1" style="height: 150px; display: flex; justify-content: center; align-items: center;">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <span style="color:#FFFFFF; font-weight: bold; font-size: 3rem;">BICHOTER'S FOOD</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="left" style="position: absolute; top: 20px; left: 20px;">
+        <img src="/images/logo.png" alt="Logo da Empresa" class="responsive-img" style="max-width: 100px;">
+    </div>
+
+    <div class="container" style="margin-top: 50px;">
         <div class="row">
             <div class="col s12 m8 l6 offset-m2 offset-l3">
-                <div class="card z-depth-3" style="padding: 30px;">
-                    <h2 class="center-align" style="font-size: 24px; color: #333;">Seu Carrinho</h2>
+                <div class="card z-depth-3" style="padding: 30px; background-color: #ffffff;">
+                    <h2 class="center-align" style="font-size: 30px; color: #E91E63; font-family: 'Roboto', sans-serif; font-weight: 500; margin-bottom: 30px;">
+                        Seu Carrinho
+                    </h2>
 
                     <ul class="collection">
-                        <li class="collection-item" th:each="item : ${itensCarrinho}">
+                        <li class="collection-item" th:each="item : ${carrinho.getItens()}">
                             <div class="row">
                                 <div class="col s8">
                                     <span th:text="${item.nome}">Nome do Prato</span> - 
@@ -34,7 +51,7 @@
 
                     <div class="total-container" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: bold;">
                         <h5>Total:</h5>
-                        <h5><span th:text="${total}">R$ 0,00</span></h5>
+                        <h5><span th:text="${carrinho.getTotal()}">R$ 0,00</span></h5>
                     </div>
 
                     <div class="center-align" style="margin-top: 30px;">
