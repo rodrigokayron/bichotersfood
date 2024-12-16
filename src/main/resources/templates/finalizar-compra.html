@@ -41,6 +41,17 @@
                             </select>
                         </div>
 
+                        <div id="campoPix" class="input-field" style="display: none;">
+                            <label for="chavePix">Chave Pix</label>
+                            <input type="text" id="chavePix" value="bichotersfood@gmail.com" readonly>
+                            <button type="button" class="btn waves-effect waves-light pink" onclick="copiarChave()">Copiar Chave Pix</button>
+                        </div>
+
+                        <div id="campoDinheiro" class="input-field" style="display: none;">
+                            <label for="troco">Precisa de troco?</label>
+                            <input type="number" name="troco" id="troco" placeholder="Digite o valor" min="0">
+                        </div>
+
                         <div class="input-field">
                             <label for="horaRetirada">Hora de Retirada</label>
                             <input type="time" name="horaRetirada" id="horaRetirada" required>
@@ -61,7 +72,33 @@
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');
             M.FormSelect.init(elems);
+
+            // Função para exibir os campos conforme a opção escolhida
+            var formaPagamentoSelect = document.getElementById('formaPagamento');
+            formaPagamentoSelect.addEventListener('change', function() {
+                var formaPagamento = formaPagamentoSelect.value;
+
+                // Esconde ambos os campos
+                document.getElementById('campoPix').style.display = 'none';
+                document.getElementById('campoDinheiro').style.display = 'none';
+
+                // Exibe o campo apropriado
+                if (formaPagamento === 'pix') {
+                    document.getElementById('campoPix').style.display = 'block';
+                } else if (formaPagamento === 'dinheiro') {
+                    document.getElementById('campoDinheiro').style.display = 'block';
+                }
+            });
         });
+
+        // Função para copiar a chave Pix
+        function copiarChave() {
+            var chavePix = document.getElementById('chavePix');
+            chavePix.select();
+            chavePix.setSelectionRange(0, 99999); // Para dispositivos móveis
+            document.execCommand('copy');
+            M.toast({html: 'Chave Pix copiada!'});
+        }
     </script>
 
 </body>

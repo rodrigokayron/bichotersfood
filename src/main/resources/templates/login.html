@@ -1,62 +1,86 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+	rel="stylesheet">
 </head>
-<body style="background-color: #f8bbd0;"> <!-- Rosa claro para fundo da tela -->
+<body style="background-color: #f8bbd0;">
 
-    <!-- Faixa superior pink, altura aumentada e centralização do texto -->
-    <div class="pink lighten-1" style="height: 150px; display: flex; justify-content: center; align-items: center;">
-        <div class="container">
-            <div class="row">
-                <div class="col s12 center-align">
-                    <!-- Texto "BICHOTER'S FOOD" centralizado na faixa -->
-                    <span style="color: #FFFFFF; font-weight: bold; font-size: 3rem;">BICHOTER'S FOOD</span>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="pink lighten-1"
+		style="height: 150px; display: flex; justify-content: center; align-items: center;">
+		<div class="container">
+			<div class="row">
+				<div class="col s12 center-align">
+					<span style="color: #FFFFFF; font-weight: bold; font-size: 3rem;">BICHOTER'S
+						FOOD</span>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <!-- Logo na parte superior esquerda -->
-    <div class="left" style="position: absolute; top: 20px; left: 20px;">
-        <img src="/images/logo.png" alt="Logo da Empresa" class="responsive-img" style="max-width: 100px;">
-    </div>
+	<div class="left" style="position: absolute; top: 20px; left: 20px;">
+		<img src="/images/logo.png" alt="Logo da Empresa"
+			class="responsive-img" style="max-width: 100px;">
+	</div>
 
-    <!-- Container para centralizar a tela -->
-    <div class="container" style="margin-top: 50px;"> <!-- Adicionando margem para descer a caixa de login -->
-        <div class="row" style="height: 100vh;">
-            <div class="col s12 m8 l6 offset-m2 offset-l3">
-                <div class="card login-card z-depth-3" style="padding: 40px; background-color: #ffffff;"> <!-- Cor branca no card de login -->
-                    <div class="center-align">
-                        <h2 style="font-weight: 500; margin-bottom: 30px;">Login</h2>
-                    </div>
-                    <form th:action="@{/login}" method="post">
-                        <div class="input-field">
-                            <input type="text" id="nomeUsuario" name="nomeUsuario" required />
-                            <label for="nomeUsuario">Nome de usuário</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="password" id="senha" name="senha" required />
-                            <label for="senha">Senha</label>
-                        </div>
-                        <button class="btn waves-effect waves-light pink" type="submit">Login</button>
-                    </form>
+	<div class="container" style="margin-top: 50px;">
+		<div class="row" style="height: 100vh;">
+			<div class="col s12 m8 l6 offset-m2 offset-l3">
+				<div class="card login-card z-depth-3"
+					style="padding: 40px; background-color: #ffffff;">
+					<div class="center-align">
+						<h2 style="font-weight: 500; margin-bottom: 30px;">Login</h2>
+					</div>
+					<form th:action="@{/login}" method="post">
+						<div class="input-field">
+							<i class="material-icons prefix">person</i> <input type="text"
+								id="nomeUsuario" name="nomeUsuario" required /> <label
+								for="nomeUsuario">Nome de usuário</label>
+						</div>
 
-                    <!-- Mensagem de erro se necessário -->
-                    <p th:if="${erro}" class="red-text text-darken-2 center-align" style="margin-top: 20px;">Credenciais inválidas, tente novamente.</p>
+						<div class="input-field">
+							<i class="material-icons prefix">lock</i> <input type="password"
+								id="senha" name="senha" required /> <label for="senha">Senha</label>
+						</div>
 
-                    <div class="center-align" style="margin-top: 20px;">
-                        <a href="/cadastro" class="btn-flat">Não tem uma conta? Cadastre-se</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+						<div class="input-field">
+							<i class="material-icons prefix">work</i> <select
+								id="tipoUsuario" name="tipoUsuario">
+								<option value="CLIENTE" selected>Cliente</option>
+								<option value="FUNCIONARIO">Funcionário</option>
+							</select> <label for="tipoUsuario">Selecione o tipo de usuário</label>
+						</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+						<button class="btn waves-effect waves-light pink" type="submit">Login</button>
+
+						<p th:if="${erro}" class="red-text text-darken-2 center-align"
+							style="margin-top: 20px;">Credenciais inválidas, tente
+							novamente.</p>
+
+						<div class="center-align" style="margin-top: 20px;">
+							<a href="/cadastro" class="btn-flat">Não tem uma conta?
+								Cadastre-se</a>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			var elems = document.querySelectorAll('select');
+			var instances = M.FormSelect.init(elems);
+		});
+	</script>
 </body>
 </html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #f8bbd0;">
+
+    <!-- Container para o estoque -->
+    <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col s12 m8 l6 offset-m2 offset-l3">
+                <div class="card z-depth-3" style="padding: 30px; background-color: #ffffff;">
+                    <h2 class="center-align" style="font-size: 30px; color: #E91E63; font-family: 'Roboto', sans-serif; font-weight: 500; margin-bottom: 30px;">
+                        Estoque de Produtos
+                    </h2>
+
+                    <table class="striped">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Preço</th>
+                                <th>Disponibilidade</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop para exibir os pratos -->
+                            <tr th:each="prato : ${pratos}">
+                                <td th:text="${prato.nome}"></td>
+                                <td th:text="${prato.preco}"></td>
+                                <td>
+                                    <!-- Campo para selecionar a disponibilidade -->
+                                    <select name="disponivel" th:value="${prato.disponivel}" id="disponivelSelect">
+                                        <option value="true" th:selected="${prato.disponivel} == true">Disponível</option>
+                                        <option value="false" th:selected="${prato.disponivel} == false">Indisponível</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <!-- Formulário para alterar a disponibilidade -->
+                                    <form th:action="@{/estoque/alterarDisponibilidade}" method="post">
+                                        <input type="hidden" name="pratoId" th:value="${prato.id}">
+                                        <input type="hidden" name="disponivel" id="disponivelInput" th:value="${prato.disponivel}">
+                                        <button type="submit" class="btn waves-effect waves-light pink">Alterar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exibir mensagem de sucesso, se houver -->
+    <div th:if="${mensagem}" class="toast-container">
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                M.toast({html: /*[[${mensagem}]]*/ 'Alterações realizadas com sucesso!', classes: 'rounded pink darken-3'});
+            });
+        </script>
+    </div>
+
+    <footer class="page-footer pink lighten-1" style="position: fixed; bottom: 0; width: 100%; padding: 10px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <span style="color: white; font-size: 18px; font-family: 'Roboto', sans-serif;">
+                        @bichotersfood | Contato: bichotersfood@gmail.com
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // Inicializando o campo select do Materialize
+        const selectElements = document.querySelectorAll('select');
+        M.FormSelect.init(selectElements);
+
+        // Atualizar o valor oculto do campo "disponivel" ao alterar a seleção
+        document.querySelectorAll('select').forEach(select => {
+            select.addEventListener('change', function() {
+                const pratoId = select.closest('tr').querySelector('input[name="pratoId"]').value;
+                const valorSelecionado = select.value === 'true'; // true ou false com base na seleção
+                select.closest('tr').querySelector(`#disponivelInput`).value = valorSelecionado; // Atualiza o valor oculto
+            });
+        });
+    </script>
+</body>
+</html>

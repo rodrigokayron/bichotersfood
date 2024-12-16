@@ -10,89 +10,155 @@
 </head>
 <body style="background-color: #f8bbd0;"> <!-- Rosa claro para fundo da tela -->
 
-    <!-- Faixa superior pink, altura aumentada e centralização do texto -->
+    <!-- Faixa superior pink -->
     <div class="pink lighten-1" style="height: 150px; display: flex; justify-content: center; align-items: center;">
-        <div class="container">
-            <div class="row">
-                <div class="col s12 center-align">
-                    <span style="color:#FFFFFF; font-weight: bold; font-size: 3rem;">BICHOTER'S FOOD</span>
-                </div>
-            </div>
-        </div>
+        <span style="color:#FFFFFF; font-weight: bold; font-size: 3rem;">BICHOTER'S FOOD</span>
     </div>
 
-    <!-- Logo na parte superior esquerda -->
-    <div class="left" style="position: absolute; top: 20px; left: 20px;">
+    <!-- Logo -->
+    <div style="position: absolute; top: 20px; left: 20px;">
         <img src="/images/logo.png" alt="Logo da Empresa" class="responsive-img" style="max-width: 100px;">
     </div>
 
-    <!-- Ícone do usuário no canto superior direito -->
+    <!-- Ícone do usuário -->
     <ul id="dropdown1" class="dropdown-content">
         <li><a href="/login">Sair</a></li>
         <li><a href="/meus-pedidos">Meus Pedidos</a></li>
         <li><a href="/cardapio/carrinho">Carrinho</a></li>
     </ul>
-
-    <!-- Botão de dropdown para o usuário -->
     <a class="dropdown-trigger btn-floating btn-large waves-effect waves-light pink" href="#" data-target="dropdown1" style="position: absolute; top: 40px; right: 40px;">
         <i class="material-icons">person</i>
     </a>
 
-    <!-- Container para o cardápio -->
+    <!-- Cardápio -->
     <div class="container" style="margin-top: 50px;">
         <div class="row">
             <div class="col s12 m8 l6 offset-m2 offset-l3">
                 <div class="card z-depth-3" style="padding: 30px; background-color: #ffffff;">
-                    <h2 class="center-align" style="font-size: 30px; color: #E91E63; font-family: 'Roboto', sans-serif; font-weight: 500; margin-bottom: 30px;">
-                        Cardápio
-                    </h2>
-
+                    <h2 class="center-align" style="font-size: 30px; color: #E91E63; font-weight: 500;">Cardápio</h2>
                     <ul class="collection">
-                        <!-- Mini Pizza -->
-                        <li class="collection-item">
+                     <!-- Mini Pizza - Frango -->
+                        <li class="collection-item" style="background-color: #fff0f6; border-radius: 10px; margin-bottom: 20px;">
                             <div class="row">
                                 <div class="col s8">
-                                    <span>Mini pizza</span> - <span>R$ 7,99</span>
-                                    <img src="/images/pizza.jpg" alt="Mini Pizza" width="150">
-                                    <p>Opções de frango, calabresa e Presunto e queijo</p>
+                                    <span style="font-weight: bold;">Mini Pizza de Frango</span> - <span>R$ 7,99</span>
+                                    <img src="/images/pizza.jpg" alt="Mini Pizza de Frango" width="150" style="border-radius: 10px;">
                                 </div>
                                 <div class="col s4 right-align">
-                                    <!-- Botão que abre o modal para escolher o sabor da mini pizza -->
-                                    <button class="btn waves-effect waves-light pink modal-trigger" href="#modalMiniPizza">Adicionar ao Carrinho</button>
+                                    <form th:action="@{/cardapio/carrinho}" method="post">
+                                        <input type="hidden" name="pratoId" value="1">
+                                        <input type="hidden" name="pratoNome" value="Mini Pizza de Frango">
+                                        <input type="hidden" name="pratoPreco" value="7.99">
+                                        <button type="submit" class="btn waves-effect waves-light pink">Adicionar</button>
+                                    </form>
                                 </div>
                             </div>
                         </li>
 
-                        <!-- Refrigerante -->
-                        <li class="collection-item">
+                        <!-- Mini Pizza - Calabresa -->
+                        <li class="collection-item" style="background-color: #fff0f6; border-radius: 10px; margin-bottom: 20px;">
                             <div class="row">
                                 <div class="col s8">
-                                    <span>Refrigerante</span> - <span>R$ 5,99</span>
-                                    <img src="/images/refrigerantes.jpg" alt="Refrigerantes" width="150">
-                                    <p>Coca, Guaraná e Pepsi</p>
+                                    <span style="font-weight: bold;">Mini Pizza de Calabresa</span> - <span>R$ 7,99</span>
+                                    <img src="/images/pizza.jpg" alt="Mini Pizza de Calabresa" width="150" style="border-radius: 10px;">
                                 </div>
                                 <div class="col s4 right-align">
-                                    <!-- Botão que abre o modal para escolha do refrigerante -->
-                                    <button class="btn waves-effect waves-light pink modal-trigger" href="#modalRefrigerante">Adicionar ao Carrinho</button>
+                                    <form th:action="@{/cardapio/carrinho}" method="post">
+                                        <input type="hidden" name="pratoId" value="2">
+                                        <input type="hidden" name="pratoNome" value="Mini Pizza de Calabresa">
+                                        <input type="hidden" name="pratoPreco" value="7.99">
+                                        <button type="submit" class="btn waves-effect waves-light pink">Adicionar</button>
+                                    </form>
                                 </div>
                             </div>
                         </li>
 
-                        <!-- Outros itens (Pastel de carne, Coxinha, etc.) -->
-                        <li class="collection-item">
+                        <!-- Mini Pizza - Presunto e Queijo -->
+                        <li class="collection-item" style="background-color: #fff0f6; border-radius: 10px; margin-bottom: 20px;">
                             <div class="row">
                                 <div class="col s8">
-                                    <span>Pastel de carne</span> - <span>R$ 5,99</span>
-                                    <img src="/images/pastel.jpg" alt="Pastel de Carne" width="150">
-                                    <p>Massa crocante e carne molho especial</p>
+                                    <span style="font-weight: bold;">Mini Pizza de Presunto e Queijo</span> - <span>R$ 7,99</span>
+                                    <img src="/images/pizza.jpg" alt="Mini Pizza de Presunto e Queijo" width="150" style="border-radius: 10px;">
                                 </div>
                                 <div class="col s4 right-align">
                                     <form th:action="@{/cardapio/carrinho}" method="post">
                                         <input type="hidden" name="pratoId" value="3">
-                                        <input type="hidden" name="pratoNome" value="Pastel de carne">
-                                        <input type="hidden" name="pratoPreco" value="5.99">
-                                        <button type="submit" class="btn waves-effect waves-light pink">Adicionar ao Carrinho</button>
+                                        <input type="hidden" name="pratoNome" value="Mini Pizza de Presunto e Queijo">
+                                        <input type="hidden" name="pratoPreco" value="7.99">
+                                        <button type="submit" class="btn waves-effect waves-light pink">Adicionar</button>
                                     </form>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Refrigerante - Coca -->
+                        <li class="collection-item" style="background-color: #fff0f6; border-radius: 10px; margin-bottom: 20px;">
+                            <div class="row">
+                                <div class="col s8">
+                                    <span style="font-weight: bold;">Refrigerante Coca</span> - <span>R$ 5,99</span>
+                                    <img src="/images/coca.jpg" alt="Refrigerante Coca" width="150" style="border-radius: 10px;">
+                                </div>
+                                <div class="col s4 right-align">
+                                    <form th:action="@{/cardapio/carrinho}" method="post">
+                                        <input type="hidden" name="pratoId" value="4">
+                                        <input type="hidden" name="pratoNome" value="Refrigerante Coca">
+                                        <input type="hidden" name="pratoPreco" value="5.99">
+                                        <button type="submit" class="btn waves-effect waves-light pink">Adicionar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Refrigerante - Guaraná -->
+                        <li class="collection-item" style="background-color: #fff0f6; border-radius: 10px; margin-bottom: 20px;">
+                            <div class="row">
+                                <div class="col s8">
+                                    <span style="font-weight: bold;">Refrigerante Guaraná</span> - <span>R$ 5,99</span>
+                                    <img src="/images/guarana.jpg" alt="Refrigerante Guaraná" width="150" style="border-radius: 10px;">
+                                </div>
+                                <div class="col s4 right-align">
+                                    <form th:action="@{/cardapio/carrinho}" method="post">
+                                        <input type="hidden" name="pratoId" value="5">
+                                        <input type="hidden" name="pratoNome" value="Refrigerante Guaraná">
+                                        <input type="hidden" name="pratoPreco" value="5.99">
+                                        <button type="submit" class="btn waves-effect waves-light pink">Adicionar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Refrigerante - Pepsi -->
+                        <li class="collection-item" style="background-color: #fff0f6; border-radius: 10px; margin-bottom: 20px;">
+                            <div class="row">
+                                <div class="col s8">
+                                    <span style="font-weight: bold;">Refrigerante Pepsi</span> - <span>R$ 5,99</span>
+                                    <img src="/images/pepsi.jpg" alt="Refrigerante Pepsi" width="150" style="border-radius: 10px;">
+                                </div>
+                                <div class="col s4 right-align">
+                                    <form th:action="@{/cardapio/carrinho}" method="post">
+                                        <input type="hidden" name="pratoId" value="6">
+                                        <input type="hidden" name="pratoNome" value="Refrigerante Pepsi">
+                                        <input type="hidden" name="pratoPreco" value="5.99">
+                                        <button type="submit" class="btn waves-effect waves-light pink">Adicionar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Outros itens (exemplo: Pastel de Carne) -->
+                        <li class="collection-item" style="background-color: #fff0f6; border-radius: 10px; margin-bottom: 20px;">
+                            <div class="row">
+                                <div class="col s8">
+                                    <span style="font-weight: bold;">Pastel de Carne</span> - <span>R$ 5,99</span>
+                                    <img src="/images/pastel.jpg" alt="Pastel de Carne" width="150" style="border-radius: 10px;">
+                                </div>
+                                <div class="col s4 right-align">
+                                    <form th:action="@{/cardapio/carrinho}" method="post">
+                                        <input type="hidden" name="pratoId" value="7">
+                                        <input type="hidden" name="pratoNome" value="Pastel de Carne">
+                                        <input type="hidden" name="pratoPreco" value="5.99">
+                                        <button type="submit" class="btn waves-effect waves-light pink">Adicionar</button>
+                                    </form>
+                                    
                                 </div>
                             </div>
                         </li>
@@ -102,91 +168,20 @@
         </div>
     </div>
 
-    <!-- Modal para escolha do sabor da Mini Pizza -->
-    <div id="modalMiniPizza" class="modal">
-        <div class="modal-content">
-            <h4>Escolha o Sabor da Mini Pizza</h4>
-            <form th:action="@{/cardapio/carrinho}" method="post">
-                <input type="hidden" name="pratoId" value="1">
-                <input type="hidden" name="pratoNome" value="Mini pizza">
-                <input type="hidden" name="pratoPreco" value="7.99">
-
-                <!-- Opções de sabores de mini pizza -->
-                <label>
-                    <input type="radio" name="saborPizza" value="Calabresa" id="calabresa" />
-                    <span>Calabresa</span>
-                </label><br>
-                <label>
-                    <input type="radio" name="saborPizza" value="Frango" id="frango" />
-                    <span>Frango</span>
-                </label><br>
-                <label>
-                    <input type="radio" name="saborPizza" value="Presunto e Queijo" id="presunto" />
-                    <span>Presunto e Queijo</span>
-                </label><br>
-                
-                <div class="center-align" style="margin-top: 20px;">
-                    <button type="submit" class="btn waves-effect waves-light pink">Adicionar ao Carrinho</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal para escolha do refrigerante -->
-    <div id="modalRefrigerante" class="modal">
-        <div class="modal-content">
-            <h4>Escolha o Refrigerante</h4>
-            <form th:action="@{/cardapio/carrinho}" method="post">
-                <input type="hidden" name="pratoId" value="2">
-                <input type="hidden" name="pratoNome" value="Refrigerante">
-                <input type="hidden" name="pratoPreco" value="5.99">
-
-                <!-- Opções de refrigerantes -->
-                <label>
-                    <input type="radio" name="saborRefrigerante" value="Coca" id="coca" />
-                    <span>Coca</span>
-                </label><br>
-                <label>
-                    <input type="radio" name="saborRefrigerante" value="Guaraná" id="guarana" />
-                    <span>Guaraná</span>
-                </label><br>
-                <label>
-                    <input type="radio" name="saborRefrigerante" value="Pepsi" id="pepsi" />
-                    <span>Pepsi</span>
-                </label><br>
-
-                <div class="center-align" style="margin-top: 20px;">
-                    <button type="submit" class="btn waves-effect waves-light pink">Adicionar ao Carrinho</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <footer class="page-footer pink lighten-1" style="position: fixed; bottom: 0; width: 100%; padding: 10px 0;">
+    <!-- Rodapé -->
+    <footer class="page-footer pink lighten-1" style="padding: 10px 0; position: fixed; bottom: 0; width: 100%;">
         <div class="container">
-            <div class="row">
-                <div class="col s12 center-align">
-                    <span style="color: white; font-size: 18px; font-family: 'Roboto', sans-serif;">
-                        @bichotersfood | Contato: bichotersfood@gmail.com
-                    </span>
-                </div>
-            </div>
+            <div class="center-align" style="color: white;">@bichotersfood | Contato: bichotersfood@gmail.com</div>
         </div>
     </footer>
 
-    <!-- Script de Inicialização -->
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Inicializando o modal
-            var elems = document.querySelectorAll('.modal');
-            M.Modal.init(elems, {});
-            
-            // Inicializando o dropdown
+        document.addEventListener('DOMContentLoaded', function () {
             var dropdowns = document.querySelectorAll('.dropdown-trigger');
             M.Dropdown.init(dropdowns, {});
         });
     </script>
-
 </body>
 </html>

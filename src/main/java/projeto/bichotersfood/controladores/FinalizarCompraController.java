@@ -16,23 +16,24 @@ public class FinalizarCompraController {
     @PostMapping
     public String finalizarCompra(@RequestParam("formaPagamento") String formaPagamento,
                                   @RequestParam("horaRetirada") String horaRetirada,
+                                  @RequestParam(value = "troco", required = false) String troco,
                                   Model model) {
 
-        System.out.println("Forma de Pagamento: " + formaPagamento);
-        System.out.println("Hora de Retirada: " + horaRetirada);
-
-        // Aqui você pode adicionar lógica para salvar o pedido no banco de dados
+        // Lógica para processar o pagamento, troco ou chave Pix
         carrinho.getItens().clear();
-
-        // Redirecionando para a página de status da compra
-        model.addAttribute("status", "Aguardando Confirmação"); // Pode mudar para "Pedido Pronto" conforme necessário
-        return "status-compra";  // Nome da nova página de status
+        model.addAttribute("status", "Aguardando Confirmação");
+        
+        if ("dinheiro".equals(formaPagamento) && troco != null) {
+            model.addAttribute("troco", troco);
+        }
+        
+        return "status-compra";
     }
 
     @GetMapping
     public String mostrarPaginaFinalizarCompra(Model model) {
         model.addAttribute("itensCarrinho", carrinho.getItens());
-        model.addAttribute("total", carrinho.getTotal());
+        model.addAttribute("total", carrinho.getTotal());  // Passando o total para o modelo
         return "finalizar-compra";
     }
 }

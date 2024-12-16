@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carrinho</title>
+<title>Meus Pedidos</title>
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
 	rel="stylesheet">
@@ -20,16 +20,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="col s12 center-align">
-					<span style="color: #FFFFFF; font-weight: bold; font-size: 3rem;">BICHOTER'S
-						FOOD</span>
+					<span style="color: #FFFFFF; font-weight: bold; font-size: 3rem;">Meus
+						Pedidos</span>
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<div class="left" style="position: absolute; top: 20px; left: 20px;">
-		<img src="/images/logo.png" alt="Logo da Empresa"
-			class="responsive-img" style="max-width: 100px;">
 	</div>
 
 	<div class="container" style="margin-top: 50px;">
@@ -39,43 +34,40 @@
 					style="padding: 30px; background-color: #ffffff;">
 					<h2 class="center-align"
 						style="font-size: 30px; color: #E91E63; font-family: 'Roboto', sans-serif; font-weight: 500; margin-bottom: 30px;">
-						Seu Carrinho</h2>
+						Histórico de Pedidos</h2>
 
 					<ul class="collection">
+						<!-- Exemplo de pedido -->
 						<li class="collection-item"
-							th:each="item : ${carrinho.getItens()}">
+							style="border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); margin-bottom: 20px; background-color: #fff0f6;">
 							<div class="row">
 								<div class="col s8">
-									<span th:text="${item.nome}">Nome do Prato</span> - <span
-										th:text="${item.preco}">Preço</span>
-								</div>
-								<div class="col s4 right-align">
-									<form th:action="@{/cardapio/carrinho/remover}" method="post"
-										style="display: inline-block;">
-										<input type="hidden" name="pratoId" th:value="${item.id}">
-										<button type="submit" class="btn-small red">Remover</button>
-									</form>
+									<span>Mini Pizza Calabresa</span> - <span>R$ 7,99</span><br>
+									<span>Data: 2024-11-28</span>
 								</div>
 							</div>
 						</li>
+
+						<!-- Adicione mais pedidos aqui dinamicamente -->
 					</ul>
 
-					<div class="total-container"
-						style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: bold;">
-						<h5>Total:</h5>
-						<h5>
-							<span th:text="${carrinho.getTotal()}">R$ 0,00</span>
-						</h5>
-					</div>
-
-					<div class="center-align" style="margin-top: 30px;">
-						<a href="/finalizar-compra"
-							class="btn waves-effect waves-light pink">Finalizar Compra</a>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<footer class="page-footer pink lighten-1"
+		style="position: fixed; bottom: 0; width: 100%; padding: 10px 0;">
+		<div class="container">
+			<div class="row">
+				<div class="col s12 center-align">
+					<span
+						style="color: white; font-size: 18px; font-family: 'Roboto', sans-serif;">
+						@bichotersfood | Contato: bichotersfood@gmail.com </span>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

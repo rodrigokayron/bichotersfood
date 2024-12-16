@@ -1,7 +1,7 @@
 package projeto.bichotersfood.repositorios;
 
-import projeto.bichotersfood.modelos.Prato;
 import org.springframework.data.jpa.repository.JpaRepository;
+import projeto.bichotersfood.modelos.Prato;
 
 public interface PratoRepository extends JpaRepository<Prato, Long> {
 }
